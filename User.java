@@ -39,7 +39,8 @@ public class User {
 
     //verificacion de tiun
     public boolean setTiun(int tiun){
-        if ( tiun > 0 && tiun <=10){
+        //crear nueva variable para cambiar el tiun a string y validar la longitud que sea 10 digitos
+        if ( tiun > 0){  //editar para la longitud
             this.tiun = tiun;
             return true;
         }else {
@@ -48,18 +49,49 @@ public class User {
         }
     }
 
-    //Metodos
-    public boolean checkBike(String bike){ //cambiar de clase CORREGIR
-        bike= bike.toLowerCase();
-        if(bike.equals("si")){
-            this.state = "activo";
+    //verificacion estado
+    public boolean setState(String state){ //para que lo edite el administrador
+        state = state.toLowerCase();
+        if (state.equals("activo")){
+            this.state = state;  
             return true;
-        }else if (bike.equals("no")){
-            this.state = "sancionado";
-            return false;
+        }else if (state.equals("bloqueado")){
+            this.state = state;
+            return true;
         }else {
-            System.out.println("Informacion invalida");
+            System.out.println("Estado invalido");
             return false;
         }
+    }
+
+    //Metodos
+    public void seeRules(){ 
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+        System.out.println("Reglamento para el préstamo de bicicletas: ");
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+        System.out.println("1. Reservas");
+        System.out.println("* La bicicleta puede reservarse por un máximo de 20 minutos.");
+        System.out.println("* Si en ese tiempo no se retira, la bicicleta vuelve a quedar disponible para otros usuarios.");
+        System.out.println("* Al momento de reservar, el usuario debe indicar la estación de recogida y la estación de entrega.");
+        System.out.println("2. Uso");
+        System.out.println("* El tiempo máximo de uso es de 15 minutos desde el retiro hasta la devolución.");
+        System.out.println("* La bicicleta debe devolverse en la estación indicada al momento de la reserva.");
+        System.out.println("* Se debe garantizar el buen uso y cuidado de la bicicleta");
+        System.out.println("3. Penalizaciones");
+        System.out.println("* Mal uso o daños: bloqueo de la cuenta por 15 días.");
+        System.out.println("* No devolución en el tiempo establecido (15 minutos): bloqueo de la cuenta por 15 días.");
+        System.out.println("* En caso de reincidencia, el bloqueo podrá extenderse hasta 30 días o suspensión definitiva.");
+        System.out.println("4. Responsabilidades del usuario");
+        System.out.println("* Verificar el estado de la bicicleta antes de retirarla.");
+        System.out.println("* Reportar cualquier daño o irregularidad inmediatamente.");
+        System.out.println("* Usar la bicicleta únicamente para desplazamientos personales, no para actividades comerciales.");
+        System.out.println("* Respetar las normas de tránsito y seguridad vial.");
+        System.out.println("5. Restricciones adicionales");
+        System.out.println("* No se permite transportar pasajeros.");
+        System.out.println("* No se permite modificar o alterar partes de la bicicleta.");
+        System.out.println("* El préstamo es personal e intransferible: solo el usuario registrado puede usar la bicicleta.");
+        System.out.println("* El incumplimiento reiterado de las reglas puede llevar a la suspensión definitiva del servicio.");
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+        
     }
 }
