@@ -39,7 +39,7 @@ public class User {
 
     //verificacion de tiun
     public boolean setTiun(int tiun){
-        if ( tiun > 0){
+        if ( tiun > 0 && tiun <=10){
             this.tiun = tiun;
             return true;
         }else {
