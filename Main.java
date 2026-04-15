@@ -41,7 +41,7 @@ public class Main {
                     System.out.println("1. Reservacion de cicla");
                     System.out.println("2. Estado de la cuenta");
                     System.out.println("3. Reglas");
-                    System.out.println("3. Tiempo de reservacion");
+                    System.out.println("4. Tiempo de reservacion");
                     System.out.println("5. Queja o comentario sobre servicio");
                     System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
                     menu = verifExcepcion(sc, "Ingrese el numero de lo que desea hacer: ");
