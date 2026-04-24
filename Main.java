@@ -6,7 +6,7 @@ public class Main {
         
         Scanner sc = new Scanner(System.in);
         User usuario;
-        String nombre_u;
+        String nombre_u, opcionMenu;
         int tiun = 0, num_estacion, id, admi_usu, menu;
         boolean verif_u, verif_tiun;// v_f = true; 
 
@@ -41,7 +41,7 @@ public class Main {
                     System.out.println("1. Reservacion de cicla");
                     System.out.println("2. Estado de la cuenta");
                     System.out.println("3. Reglas");
-                    System.out.println("4. Tiempo de reservacion");
+                    System.out.println("3. Tiempo de reservacion");
                     System.out.println("5. Queja o comentario sobre servicio");
                     System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
                     menu = verifExcepcion(sc, "Ingrese el numero de lo que desea hacer: ");
@@ -74,8 +74,8 @@ public class Main {
                     }else if (menu == 3){
                         System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
                         System.out.println("Reglas");
-                        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-                        System.out.println();
+                        usuario.seeRules();
+                        sc.nextLine();
     
                     }else if ( menu == 4){
                         System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
@@ -90,24 +90,32 @@ public class Main {
                         System.out.println();
 
                     }else{
-                        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-                        System.out.println("Ingrese de nuevo el valor correcto");
-                        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+                        mensajeError();
                     }
-                }while (menu > 5 || menu < 0);
+                    do{
+                        System.out.print("Desea volver al menu principal? (si/no); ");
+                        opcionMenu = sc.nextLine().toLowerCase();
+                        if (opcionMenu.equals("no")){
+                            System.out.println("Gracias por usar el aplicativo.");
+                        }else{
+                            mensajeError();
+                        }
+                    }while(!opcionMenu.equals("no") && !opcionMenu.equals("si"));
+                    
+
+                }while (menu > 5 || menu < 0 || opcionMenu.equals("si"));
                 
 
             }else{
-                System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-                System.out.println("Ingrese de nuevo el valor correcto");
-                System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+                mensajeError();
             }
         }while(admi_usu < 1 || admi_usu > 2);
         
-
-
         sc.close();
     }
+
+    //Funciones
+
      //funcion de exepcion para int
     public static int verifExcepcion(Scanner sc, String mensaje){
         boolean v_f = true;
@@ -119,14 +127,19 @@ public class Main {
                 v_f = true;
             }catch(Exception e){ 
                 sc.nextLine();
-                System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-                System.out.println(" Error: " + e);
-                System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-                System.out.println("Ingrese de nuevo el valor correcto");
-                System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+                mensajeError();
                 v_f = false;
             }
         }while(!v_f);
         return num;   
     }  
+    //Funcion para mensaje de error
+    public static void mensajeError (){
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+        System.out.println("Ingrese de nuevo el valor correcto");
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
+        
+    }
+
 }
+
