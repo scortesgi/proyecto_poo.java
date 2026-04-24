@@ -39,8 +39,8 @@ public class User {
 
     //verificacion de tiun
     public boolean setTiun(int tiun){
-        //crear nueva variable para cambiar el tiun a string y validar la longitud que sea 10 digitos
-        if ( tiun > 0){  //editar para la longitud
+        String tiunS = Integer.toString(tiun);
+        if (tiunS.length() == 10 ){  
             this.tiun = tiun;
             return true;
         }else {
