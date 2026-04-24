@@ -1,27 +1,21 @@
-
-public class User {
-
-     //Atributos
-    private String username, state = "activo";
-    private int tiun; //codigo del carnet
+//clase madre user
+public abstract class User {
+    //Atributos
+    private String username;
+    private int cedula; 
 
     //Constructor
-    public User (String username, int tiun){
+    public User (String username, int cedula){
         this.username = username;
-        this.tiun = tiun;
+        this.cedula = cedula;
     }
-
     //Get
     public String getUserName(){
         return username;
     }
 
-    public int getTiun(){
-        return tiun;
-    }
-
-    public String getState(){
-        return state;
+    public int getCedula(){
+        return cedula;
     }
 
     //Set
@@ -37,30 +31,15 @@ public class User {
         }
     }
 
-    //verificacion de tiun
-    public boolean setTiun(int tiun){
-        String tiunS = Integer.toString(tiun);
-        if (tiunS.length() == 10 ){  
-            this.tiun = tiun;
+    //verificacion de cedula
+    public boolean setCedula(int cedula){
+        String cedulaS = Integer.toString(cedula);
+        if (cedulaS.length() <= 10 && cedulaS.length() >= 8 ){  
+            this.cedula = cedula;
             return true;
         }else {
-            System.out.println("Tiun invalido");
+            System.out.println("C.C o T.I invalido");
             return false;   
-        }
-    }
-
-    //verificacion estado
-    public boolean setState(String state){ //para que lo edite el administrador
-        state = state.toLowerCase();
-        if (state.equals("activo")){
-            this.state = state;  
-            return true;
-        }else if (state.equals("bloqueado")){
-            this.state = state;
-            return true;
-        }else {
-            System.out.println("Estado invalido");
-            return false;
         }
     }
 
@@ -91,7 +70,6 @@ public class User {
         System.out.println("* No se permite modificar o alterar partes de la bicicleta.");
         System.out.println("* El préstamo es personal e intransferible: solo el usuario registrado puede usar la bicicleta.");
         System.out.println("* El incumplimiento reiterado de las reglas puede llevar a la suspensión definitiva del servicio.");
-        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");
-        
+        System.out.println("- - - -- - - - -- - - -- - - - -- - - - -- - - - -- ");   
     }
 }
